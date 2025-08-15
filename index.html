@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Plano de Estudos Cripto — Checklist Interativo (6 meses)</title>
+<style>
+body{font-family:sans-serif;background:#0f172a;color:#e5e7eb;margin:0;padding:20px;}
+h1,h2,h3{margin:0 0 8px;}
+h1{font-size:28px;}
+h2{font-size:22px;color:#22d3ee;}
+h3{font-size:18px;color:#38bdf8;}
+section{background:#111827;border-radius:12px;padding:16px;margin-bottom:20px;box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+ul{list-style:none;padding-left:0;}
+li{display:flex;align-items:flex-start;margin-bottom:6px;flex-wrap:wrap;}
+input[type=checkbox]{margin-right:10px;margin-top:2px;}
+a{color:#22d3ee;text-decoration:none;word-break:break-word;position:relative;}
+a:hover{text-decoration:underline;}
+a[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left:0;
+  bottom:125%;
+  background:#111827;
+  color:#e5e7eb;
+  padding:6px 10px;
+  border-radius:6px;
+  white-space: pre-line;
+  z-index:100;
+  font-size:14px;
+  max-width:300px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+.progress{height:10px;background:#1f2937;border-radius:999px;margin:10px 0;}
+.bar{height:100%;width:0;background:#22d3ee;border-radius:999px;}
+.tools button{margin-right:10px;margin-top:5px;padding:6px 12px;border:none;border-radius:6px;cursor:pointer;}
+.tools button:hover{opacity:0.8;}
+.accent{background:#22d3ee;color:#0b1025;}
+.ok{background:#34d399;color:#0b1025;}
+.danger{background:#ef4444;color:#fff;}
+@media(max-width:600px){
+  body{padding:10px;}
+  h1{font-size:22px;}
+  h2{font-size:18px;}
+  h3{font-size:16px;}
+  .tools button{margin-bottom:6px;width:48%;}
+}
+</style>
+</head>
+<body>
+<h1>Plano de Estudos de Criptomoedas — 6 Meses</h1>
+<p>Carga recomendada: 5-7h/semana • Cada mês é um nível de aprendizado.</p>
+<div class="tools">
+  <button class="accent" id="exportar">Exportar progresso</button>
+  <button id="importar">Importar progresso</button>
+  <button class="ok" id="imprimir">Imprimir / PDF</button>
+  <button class="danger" id="zerar">Limpar tudo</button>
+</div>
+<div class="progress">
+  <div class="bar" id="bar-geral"></div>
+</div>
+<p id="contagem-geral">0 de 0 concluídas (0%)</p>
+<main id="conteudo"></main>
+
+<script>
+const plano=[
+{
+mes:"Mês 1 — Fundamentos Absolutos",
+objetivo:"Entender o que é dinheiro, blockchain e criptomoeda.",
+estudos:[
+"História do dinheiro e evolução para o digital.",
+"Conceitos de blockchain, descentralização e imutabilidade.",
+"Como funciona uma transação (chaves públicas e privadas).",
+"Bitcoin como exemplo prático."
+],
+pratica:[
+"Criar uma carteira gratuita (Ex: Trust Wallet ou MetaMask).",
+"Enviar e receber valores fictícios usando testnet Bitcoin ou Ethereum.",
+"Explorar transações no blockchain explorer (blockchair.com ou etherscan.io)."
+],
+recursos:[
+{name:"Binance Academy",url:"https://academy.binance.com/en",tooltip:"Artigos e vídeos sobre cripto, blockchain, NFT e segurança, leitura estimada: 1-2h."},
+{name:"Coinbase Crypto Basics",url:"https://www.coinbase.com/learn/crypto-basics/essential-reading",tooltip:"Guia passo a passo para iniciantes, inclui vídeos curtos e artigos."},
+{name:"Área Bitcoin",url:"https://www.youtube.com/channel/UC7PL5GpOZFTjDAl9BSas0eA",tooltip:"Canal em português com tutoriais e notícias de cripto, duração média dos vídeos 5-15 min."},
+{name:"Crypto Casey (EN)",url:"https://www.youtube.com/@CryptoCasey",tooltip:"Tutoriais práticos em inglês para iniciantes, vídeos de 10-20 min cada."}
+]
+},
+{
+mes:"Mês 2 — Bitcoin e Blockchain na Prática",
+objetivo:"Dominar a mecânica técnica do Bitcoin.",
+estudos:[
+"Estrutura de blocos e mineração (Proof of Work).",
+"Halving e política monetária do Bitcoin.",
+"Rede P2P e consenso.",
+"Escalabilidade e limitações."
+],
+pratica:[
+"Acompanhar blocos em tempo real no mempool.space.",
+"Calcular taxas de transação.",
+"Testar envio com diferentes taxas e ver a confirmação no explorer."
+],
+recursos:[
+{name:"Mastering Bitcoin - PDF gratuito",url:"https://github.com/bitcoinbook/bitcoinbook",tooltip:"Livro técnico gratuito para estudo profundo, leitura flexível por capítulos."},
+{name:"Matheus Bordin – Lucro na Certa",url:"https://www.youtube.com/@LucroNaCerta",tooltip:"Canal em português com análises e dicas de trading, vídeos 5-20 min."},
+{name:"DataDash (EN)",url:"https://www.youtube.com/@DataDash",tooltip:"Canal em inglês com análises macroeconômicas e cripto, vídeos 10-25 min."}
+]
+},
+{
+mes:"Mês 3 — Outras Criptos e Contratos Inteligentes",
+objetivo:"Conhecer altcoins e o mundo dos tokens.",
+estudos:[
+"Ethereum e contratos inteligentes.",
+"Stablecoins e uso no dia a dia.",
+"Tokens ERC-20 e NFTs.",
+"Projetos de privacidade (Monero, Zcash)."
+],
+pratica:[
+"Criar uma conta em exchange (somente verificação, sem investimento real ainda).",
+"Interagir com um contrato inteligente simples na testnet Ethereum (usando Remix IDE).",
+"Mintar um NFT gratuito na testnet."
+],
+recursos:[
+{name:"Ethereum.org Learn",url:"https://ethereum.org/en/learn/",tooltip:"Artigos e tutoriais oficiais, duração 1-3h para explorar tópicos principais."},
+{name:"CryptoZombies - Curso de Solidity",url:"https://cryptozombies.io",tooltip:"Curso interativo de Solidity, duração média 4-6h para completar o tutorial básico."},
+{name:"Coin Bureau (EN)",url:"https://www.youtube.com/@CoinBureau",tooltip:"Canal em inglês com análises detalhadas de projetos cripto, vídeos 15-25 min."}
+]
+},
+{
+mes:"Mês 4 — Segurança e Boas Práticas",
+objetivo:"Aprender a proteger seus criptoativos.",
+estudos:[
+"Tipos de carteiras (hot, cold, hardware).",
+"Seed phrases e backups.",
+"Principais golpes no mundo cripto.",
+"Segurança digital (2FA, senhas, VPN)."
+],
+pratica:[
+"Configurar uma hardware wallet (ou simulação no app).",
+"Criar backup da seed phrase em local seguro (nunca digital).",
+"Simular um ataque phishing para identificar riscos."
+],
+recursos:[
+{name:"Canal Mercado Cripto",url:"https://www.youtube.com/@mercadocripto",tooltip:"Tutoriais sobre segurança e boas práticas, vídeos 5-15 min."},
+{name:"Criptomaníacos",url:"https://www.youtube.com/@criptomaniacos",tooltip:"Conteúdo em português com análises e dicas de segurança digital, vídeos curtos."},
+{name:"Sheldon Evans (EN)",url:"https://www.youtube.com/@SheldonEvans",tooltip:"Conteúdo internacional sobre altcoins, DeFi e segurança, vídeos 10-20 min."}
+]
+},
+{
+mes:"Mês 5 — Investimento, Trading e DeFi",
+objetivo:"Entender como analisar e negociar criptomoedas.",
+estudos:[
+"Análise fundamentalista (projeto, equipe, utilidade).",
+"Análise técnica básica (suporte, resistência, médias móveis).",
+"Psicologia do investidor.",
+"Introdução ao DeFi e staking."
+],
+pratica:[
+"Abrir conta demo em exchange e fazer operações fictícias.",
+"Testar staking de tokens na testnet.",
+"Usar Uniswap ou PancakeSwap em rede de teste."
+],
+recursos:[
+{name:"Luiz Fernando",url:"https://www.youtube.com/@luizfernando",tooltip:"Canal em português com análises técnicas e trading, vídeos 10-20 min."},
+{name:"Benjamin Cowen (EN)",url:"https://www.youtube.com/@benjamincowen",tooltip:"Canal em inglês sobre análise de longo prazo, vídeos 10-20 min."},
+{name:"EllioTrades Crypto (EN)",url:"https://www.youtube.com/@elliotrades",tooltip:"Dicas de projetos cripto e DeFi, vídeos 5-15 min."}
+]
+},
+{
+mes:"Mês 6 — Programação e Especializações",
+objetivo:"Entrar no lado técnico e avançado.",
+estudos:[
+"Introdução ao Solidity e criação de contratos inteligentes.",
+"Noções de Web3.js ou Ethers.js.",
+"Layer 2 e soluções de escalabilidade.",
+"Criptoeconomia e tokenomics avançado."
+],
+pratica:[
+"Criar e fazer deploy de um token ERC-20 na testnet.",
+"Integrar contrato inteligente com uma interface web simples.",
+"Participar de um mini-hackathon online de blockchain."
+],
+recursos:[
+{name:"101 Blockchains – Recursos Gratuitos",url:"https://101blockchains.com/free-blockchain-resources/",tooltip:"Lista de tutoriais, artigos e cursos gratuitos, leitura 1-3h."},
+{name:"GitHub – Blockchain Resources",url:"https://github.com/blockchainedindia/resources",tooltip:"Repositórios com cursos, artigos e guias de blockchain."},
+{name:"Crypto Altruism – Recursos Gratuitos",url:"https://www.cryptoaltruism.org/blog/ten-top-free-resources-for-blockchain-beginners",tooltip:"Lista organizada de cursos, podcasts e artigos gratuitos para iniciantes."}
+]
+}
+];
+
+const KEY='crypto-plan-v4';
+const conteudo=document.getElementById('conteudo');
+let state=JSON.parse(localStorage.getItem(KEY)||'{}');
+
+function render(){
+  conteudo.innerHTML='';
+  let total=0, done=0;
+
+  plano.forEach((sec,idx)=>{
+    const secId=sec.mes.replace(/\s+/g,'_');
+    const checks=state[secId]||{};
+    const section=document.createElement('section');
+
+    section.innerHTML=`<h2>${sec.mes}</h2>
+    <p><strong>Objetivo:</strong> ${sec.objetivo}</p>
+    <h3>Estudos</h3>
+    <ul>${sec.estudos.map((t,i)=>`<li><input type="checkbox" id="${secId}-est-${i}" ${checks[secId+'-est-'+i]? 'checked':''}><label for="${secId}-est-${i}">${t}</label></li>`).join('')}</ul>
+    <h3>Prática</h3>
+    <ul>${sec.pratica.map((t,i)=>`<li><input type="checkbox" id="${secId}-pra-${i}" ${checks[secId+'-pra-'+i]? 'checked':''}><label for="${secId}-pra-${i}">${t}</label></li>`).join('')}</ul>
+    <h3>Recursos Gratuitos / Canais</h3>
+    <ul>${sec.recursos.map(r=>`<li><a href="${r.url}" target="_blank" data-tooltip="${r.tooltip}">${r.name||r.nome}</a></li>`).join('')}</ul>
+    <div class="progress"><div class="bar" id="bar-${secId}"></div></div>
+    <p id="meta-${secId}"></p>
+    `;
+
+    conteudo.appendChild(section);
+
+    const boxes=section.querySelectorAll('input[type=checkbox]');
+    const totalSec=boxes.length;
+    const doneSec=[...boxes].filter(b=>b.checked).length;
+    total+=totalSec; done+=doneSec;
+
+    function updateSection(){ 
+      const doneCount=[...boxes].filter(b=>b.checked).length;
+      document.getElementById('bar-'+secId).style.width=(doneCount/totalSec*100)+'%';
+      document.getElementById('meta-'+secId).textContent=`${doneCount} de ${totalSec} concluídas (${Math.round(doneCount/totalSec*100)}%)`;
+      updateOverall();
+    }
+
+    boxes.forEach(b=>b.addEventListener('change',e=>{
+      state[secId]=state[secId]||{};
+      state[secId][b.id]=b.checked;
+      localStorage.setItem(KEY,JSON.stringify(state));
+      updateSection();
+    }));
+
+    updateSection();
+  });
+
+  function updateOverall(){
+    const allBoxes=document.querySelectorAll('input[type=checkbox]');
+    const totalBoxes=allBoxes.length;
+    const doneBoxes=[...allBoxes].filter(b=>b.checked).length;
+    document.getElementById('bar-geral').style.width=(doneBoxes/totalBoxes*100)+'%';
+    document.getElementById('contagem-geral').textContent=`${doneBoxes} de ${totalBoxes} concluídas (${Math.round(doneBoxes/totalBoxes*100)}%)`;
+  }
+
+  updateOverall();
+}
+
+render();
+
+document.getElementById('zerar').addEventListener('click',()=>{
+  if(confirm('Tem certeza que deseja limpar todo o progresso?')){
+    localStorage.removeItem(KEY); state={}; render();
+  }
+});
+document.getElementById('imprimir').addEventListener('click',()=>window.print());
+document.getElementById('exportar').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(state)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='plano-cripto-checklist.json'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+document.getElementById('importar').addEventListener('click',()=>{
+  const inp=document.createElement('input'); inp.type='file'; inp.accept='application/json';
+  inp.onchange=()=>{ 
+    const file=inp.files[0]; 
+    if(!file) return;
+    const reader=new FileReader();
+    reader.onload=()=>{ 
+      try{ state=JSON.parse(reader.result); localStorage.setItem(KEY,JSON.stringify(state)); render(); alert('Progresso importado!'); }
+      catch(e){alert('Arquivo inválido');}
+    };
+    reader.readAsText(file);
+  }; inp.click();
+});
+</script>
+</body>
+</html>
