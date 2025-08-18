@@ -1,26 +1,21 @@
 {
   "name": "OrbeLab",
   "short_name": "OrbeLab",
+  "description": "Checklist completo de aprendizado em Cripto, Bitcoin e Blockchain",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
-  "description": "OrbeLab - Plano de estudos de criptomoedas e blockchain.",
   "icons": [
     {
-      "src": "icon/orbelab-icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "icon/orbelab-icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    },
-    {
-      "src": "icon/orbelab-icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "512x512"
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
