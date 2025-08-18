@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Plano de Estudos - Criptomoedas (6 Meses)</title>
-  <style>
-    :root{
-      --bg:#0d1117;
-      --card:#161b22;
-      --edge:#30363d;
-      --muted:#21262d;
-      --text:#c9d1d9;
-      --title:#f0f6fc;
-      --link:#58a6ff;
-      --green:#2ea043;
-    }
-    *{box-sizing:border-box}
-    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); margin:0; padding:0;}
-    header{position: sticky; top:0; z-index:10; background: var(--card); border-bottom: 1px solid var(--edge); padding: 12px 16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:space-between;}
-    header h1{margin:0; font-size:18px; color:var(--title);}
-    .toolbar{display:flex; gap:8px; flex-wrap:wrap;}
-    .btn{background: var(--muted); color: var(--title); border:1px solid var(--edge); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:14px;}
-    .btn:hover{filter:brightness(1.05);}
-    .container{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; padding:20px;}
-    .month{background: var(--card); border:1px solid var(--edge); border-radius:8px; padding:16px; display:flex; flex-direction:column;}
-    .month h2{margin:0 0 10px; font-size:18px; color:var(--link);}
-    ul{list-style:none; padding:0; margin:0; flex:1;}
-    li{background: var(--muted); border:1px solid var(--edge); border-radius:6px; padding:10px; margin:6px 0; display:flex; flex-direction:column; gap:6px;}
-    label{display:flex; align-items:center; gap:10px; font-size:14px;}
-    input[type="checkbox"]{transform:scale(1.15);}
-    .links{font-size:13px;}
-    a{color:var(--link); text-decoration:none; margin-right:8px;}
-    a:hover{text-decoration:underline;}
-    .month-progress{margin-top:10px; background: var(--muted); border:1px solid var(--edge); border-radius:6px; overflow:hidden;}
-    .month-bar{height:14px; background: var(--green); width:0%; color:#fff; font-size:12px; line-height:14px; text-align:center; transition: width .25s ease;}
-    .progress-container{margin: 12px 20px 24px; background: var(--muted); border:1px solid var(--edge); border-radius:8px; overflow:hidden;}
-    .progress-bar{height:24px; background: var(--green); width:0%; color:#fff; text-align:center; line-height:24px; font-weight:600; transition: width .25s ease;}
-    .hint{opacity:.8; font-size:12px; text-align:center; margin: 0 20px 20px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Estudos - Criptomoedas (6 Níveis)</title>
+<style>
+:root{
+  --bg:#0d1117;
+  --card:#161b22;
+  --edge:#30363d;
+  --muted:#21262d;
+  --text:#c9d1d9;
+  --title:#f0f6fc;
+  --link:#58a6ff;
+  --green:#2ea043;
+  --blue:#1f6feb;
+}
+*{box-sizing:border-box;}
+body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); margin:0; padding:0;}
+header{position: sticky; top:0; z-index:10; background: var(--card); border-bottom: 1px solid var(--edge); padding: 12px 16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:space-between;}
+header h1{margin:0; font-size:18px; color:var(--title);}
+.toolbar{display:flex; gap:8px; flex-wrap:wrap;}
+.btn{background: var(--muted); color: var(--title); border:1px solid var(--edge); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:14px;}
+.btn:hover{filter:brightness(1.05);}
+.container{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; padding:20px;}
+.month{background: var(--card); border:1px solid var(--edge); border-radius:8px; padding:16px; display:flex; flex-direction:column;}
+.month h2{margin:0 0 10px; font-size:18px; color:var(--link);}
+ul{list-style:none; padding:0; margin:0; flex:1;}
+li{background: var(--muted); border:1px solid var(--edge); border-radius:6px; padding:10px; margin:6px 0; display:flex; flex-direction:column; gap:6px;}
+label{display:flex; align-items:center; gap:10px; font-size:14px;}
+input[type="checkbox"]{transform:scale(1.15);}
+.links{font-size:13px;}
+a{color:var(--link); text-decoration:none; margin-right:8px;}
+a:hover{text-decoration:underline;}
+.month-progress{margin-top:6px; background: var(--muted); border:1px solid var(--edge); border-radius:6px; overflow:hidden;}
+.month-bar{height:14px; width:0%; color:#fff; font-size:12px; line-height:14px; text-align:center; transition: width .25s ease;}
+.bar-theory{background: var(--green);}
+.bar-practice{background: var(--blue);}
+.progress-container{margin: 12px 20px 24px; background: var(--muted); border:1px solid var(--edge); border-radius:8px; overflow:hidden;}
+.progress-bar{height:24px; background: var(--green); width:0%; color:#fff; text-align:center; line-height:24px; font-weight:600; transition: width .25s ease;}
+.hint{opacity:.8; font-size:12px; text-align:center; margin: 0 20px 20px;}
+</style>
 </head>
 <body>
 <header>
-  <h1>Plano de Estudos - Criptomoedas (6 Meses)</h1>
+  <h1>Plano de Estudos - Criptomoedas (6 Níveis)</h1>
   <div class="toolbar">
     <button class="btn" id="btnExport">Exportar resultado</button>
     <button class="btn" id="btnImport">Importar resultado</button>
@@ -51,93 +54,125 @@
 
 <div class="container" id="grid">
 
-  <!-- Mês 1 -->
-  <section class="month" data-month="m1">
-    <h2>Mês 1 – Fundamentos Absolutos</h2>
-    <ul>
-      <li><label><input type="checkbox" data-key="m1_1"> História do dinheiro e evolução para o digital</label></li>
-      <li><label><input type="checkbox" data-key="m1_2"> Conceitos de blockchain, descentralização e imutabilidade</label></li>
-      <li><label><input type="checkbox" data-key="m1_3"> Como funciona uma transação (chaves públicas e privadas)</label></li>
-      <li><label><input type="checkbox" data-key="m1_4"> Bitcoin como exemplo prático</label></li>
-    </ul>
-    <div class="month-progress"><div class="month-bar">0%</div></div>
-  </section>
+<!-- Nível 1 -->
+<section class="month" data-month="m1">
+  <h2>Nível 1 – Fundamentos Absolutos</h2>
+  <strong>Estudos:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m1_1"> História do dinheiro e evolução para o digital</label></li>
+    <li><label><input type="checkbox" data-key="m1_2"> Conceitos de blockchain, descentralização e imutabilidade</label></li>
+    <li><label><input type="checkbox" data-key="m1_3"> Como funciona uma transação (chaves públicas e privadas)</label></li>
+    <li><label><input type="checkbox" data-key="m1_4"> Bitcoin como exemplo prático</label></li>
+  </ul>
+  <strong>Prática:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m1_p1"> Criar carteira gratuita (Trust Wallet/MetaMask)</label></li>
+    <li><label><input type="checkbox" data-key="m1_p2"> Enviar/receber valores fictícios (testnet)</label></li>
+    <li><label><input type="checkbox" data-key="m1_p3"> Explorar transações no blockchain explorer</label></li>
+  </ul>
+  <div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+  <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
 
-  <!-- Mês 2 -->
-  <section class="month" data-month="m2">
-    <h2>Mês 2 – Bitcoin e Blockchain na Prática</h2>
-    <ul>
-      <li><label><input type="checkbox" data-key="m2_1"> Estrutura de blocos e mineração (Proof of Work)</label></li>
-      <li><label><input type="checkbox" data-key="m2_2"> Halving e política monetária do Bitcoin</label></li>
-      <li><label><input type="checkbox" data-key="m2_3"> Rede P2P e consenso</label></li>
-      <li><label><input type="checkbox" data-key="m2_4"> Escalabilidade e limitações</label></li>
-    </ul>
-    <div class="month-progress"><div class="month-bar">0%</div></div>
-  </section>
+<!-- Nível 2 -->
+<section class="month" data-month="m2">
+  <h2>Nível 2 – Bitcoin e Blockchain na Prática</h2>
+  <strong>Estudos:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m2_1"> Estrutura de blocos e mineração (Proof of Work)</label></li>
+    <li><label><input type="checkbox" data-key="m2_2"> Halving e política monetária do Bitcoin</label></li>
+    <li><label><input type="checkbox" data-key="m2_3"> Rede P2P e consenso</label></li>
+    <li><label><input type="checkbox" data-key="m2_4"> Escalabilidade e limitações</label></li>
+  </ul>
+  <strong>Prática:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m2_p1"> Acompanhar blocos em tempo real</label></li>
+    <li><label><input type="checkbox" data-key="m2_p2"> Calcular taxas de transação</label></li>
+    <li><label><input type="checkbox" data-key="m2_p3"> Testar envio com diferentes taxas</label></li>
+  </ul>
+  <div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+  <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
 
-  <!-- Mês 3 -->
-  <section class="month" data-month="m3">
-    <h2>Mês 3 – Outras Criptos e Contratos Inteligentes</h2>
-    <ul>
-      <li><label><input type="checkbox" data-key="m3_1"> Ethereum e contratos inteligentes</label></li>
-      <li><label><input type="checkbox" data-key="m3_2"> Stablecoins e uso no dia a dia</label></li>
-      <li><label><input type="checkbox" data-key="m3_3"> Tokens ERC-20 e NFTs</label></li>
-      <li><label><input type="checkbox" data-key="m3_4"> Projetos de privacidade (Monero, Zcash)</label></li>
-    </ul>
-    <div class="month-progress"><div class="month-bar">0%</div></div>
-  </section>
+<!-- Nível 3 -->
+<section class="month" data-month="m3">
+  <h2>Nível 3 – Outras Criptos e Contratos Inteligentes</h2>
+  <strong>Estudos:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m3_1"> Ethereum e contratos inteligentes</label></li>
+    <li><label><input type="checkbox" data-key="m3_2"> Stablecoins e uso no dia a dia</label></li>
+    <li><label><input type="checkbox" data-key="m3_3"> Tokens ERC-20 e NFTs</label></li>
+    <li><label><input type="checkbox" data-key="m3_4"> Projetos de privacidade (Monero, Zcash)</label></li>
+  </ul>
+  <strong>Prática:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m3_p1"> Criar conta em exchange (apenas verificação)</label></li>
+    <li><label><input type="checkbox" data-key="m3_p2"> Interagir com contrato inteligente na testnet</label></li>
+    <li><label><input type="checkbox" data-key="m3_p3"> Mintar NFT gratuito na testnet</label></li>
+  </ul>
+  <div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+  <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
 
-  <!-- Mês 4 -->
-  <section class="month" data-month="m4">
-    <h2>Mês 4 – Segurança e Boas Práticas</h2>
-    <ul>
-      <li><label><input type="checkbox" data-key="m4_1"> Tipos de carteiras (hot, cold, hardware)</label></li>
-      <li><label><input type="checkbox" data-key="m4_2"> Seed phrases e backups</label></li>
-      <li><label><input type="checkbox" data-key="m4_3"> Principais golpes no mundo cripto</label></li>
-      <li><label><input type="checkbox" data-key="m4_4"> Segurança digital (2FA, senhas, VPN)</label></li>
-    </ul>
-    <div class="month-progress"><div class="month-bar">0%</div></div>
-  </section>
+<!-- Nível 4 -->
+<section class="month" data-month="m4">
+  <h2>Nível 4 – Segurança e Boas Práticas</h2>
+  <strong>Estudos:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m4_1"> Tipos de carteiras (hot, cold, hardware)</label></li>
+    <li><label><input type="checkbox" data-key="m4_2"> Seed phrases e backups</label></li>
+    <li><label><input type="checkbox" data-key="m4_3"> Principais golpes no mundo cripto</label></li>
+    <li><label><input type="checkbox" data-key="m4_4"> Segurança digital (2FA, senhas, VPN)</label></li>
+  </ul>
+  <strong>Prática:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m4_p1"> Configurar hardware wallet ou simulação</label></li>
+    <li><label><input type="checkbox" data-key="m4_p2"> Criar backup da seed phrase</label></li>
+    <li><label><input type="checkbox" data-key="m4_p3"> Simular ataque phishing</label></li>
+  </ul>
+  <div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+  <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
 
-  <!-- Mês 5 -->
-  <section class="month" data-month="m5">
-    <h2>Mês 5 – Custódia Própria & Transações Offline</h2>
-    <ul>
-      <li><label><input type="checkbox" data-key="m5_1"> Custódia própria (self-custody)</label>
-        <div class="links">
-          <a href="https://ledger.com" target="_blank">Ledger</a>
-          <a href="https://trezor.io" target="_blank">Trezor</a>
-          <a href="https://coldcard.com" target="_blank">Coldcard</a>
-        </div>
-      </li>
-      <li><label><input type="checkbox" data-key="m5_2"> Transações offline (air-gapped)</label>
-        <div class="links">
-          <a href="https://electrum.org" target="_blank">Electrum</a>
-          <a href="https://sparrowwallet.com" target="_blank">Sparrow</a>
-        </div>
-      </li>
-      <li><label><input type="checkbox" data-key="m5_3"> Multisig (assinatura múltipla)</label></li>
-      <li><label><input type="checkbox" data-key="m5_4"> Compras e vendas P2P sem corretoras</label>
-        <div class="links">
-          <a href="https://bisq.network" target="_blank">Bisq</a>
-          <a href="https://hodlhodl.com" target="_blank">Hodl Hodl</a>
-        </div>
-      </li>
-    </ul>
-    <div class="month-progress"><div class="month-bar">0%</div></div>
-  </section>
+<!-- Nível 5 -->
+<section class="month" data-month="m5">
+  <h2>Nível 5 – Custódia Própria & Transações Offline</h2>
+  <strong>Estudos:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m5_1"> Custódia própria (self-custody)</label></li>
+    <li><label><input type="checkbox" data-key="m5_2"> Transações offline (air-gapped)</label></li>
+    <li><label><input type="checkbox" data-key="m5_3"> Multisig (assinatura múltipla)</label></li>
+    <li><label><input type="checkbox" data-key="m5_4"> Compras e vendas P2P sem corretoras</label></li>
+  </ul>
+  <strong>Prática:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m5_p1"> Testar wallet offline (Electrum, Sparrow)</label></li>
+    <li><label><input type="checkbox" data-key="m5_p2"> Configurar multisig em testnet</label></li>
+    <li><label><input type="checkbox" data-key="m5_p3"> Comprar/vender P2P em sandbox</label></li>
+  </ul>
+  <div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+  <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
 
-  <!-- Mês 6 -->
-  <section class="month" data-month="m6">
-    <h2>Mês 6 – Programação e Especializações</h2>
-    <ul>
-      <li><label><input type="checkbox" data-key="m6_1"> Introdução ao Solidity e contratos inteligentes</label></li>
-      <li><label><input type="checkbox" data-key="m6_2"> Noções de Web3.js ou Ethers.js</label></li>
-      <li><label><input type="checkbox" data-key="m6_3"> Layer 2 e soluções de escalabilidade</label></li>
-      <li><label><input type="checkbox" data-key="m6_4"> Criptoeconomia e tokenomics avançado</label></li>
-    </ul>
-    <div class="month-progress"><div class="month-bar">0%</div></div>
-  </section>
+<!-- Nível 6 -->
+<section class="month" data-month="m6">
+  <h2>Nível 6 – Programação e Especializações</h2>
+  <strong>Estudos:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m6_1"> Introdução ao Solidity e contratos inteligentes</label></li>
+    <li><label><input type="checkbox" data-key="m6_2"> Noções de Web3.js ou Ethers.js</label></li>
+    <li><label><input type="checkbox" data-key="m6_3"> Layer 2 e soluções de escalabilidade</label></li>
+    <li><label><input type="checkbox" data-key="m6_4"> Criptoeconomia e tokenomics avançado</label></li>
+  </ul>
+  <strong>Prática:</strong>
+  <ul>
+    <li><label><input type="checkbox" data-key="m6_p1"> Criar e fazer deploy de token ERC-20</label></li>
+    <li><label><input type="checkbox" data-key="m6_p2"> Integrar contrato com interface web</label></li>
+    <li><label><input type="checkbox" data-key="m6_p3"> Participar de mini-hackathon online</label></li>
+  </ul>
+  <div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+  <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
 
 </div>
 
@@ -148,82 +183,84 @@
 
 <script>
 (function(){
-  const STORAGE_KEY = 'cryptoPlan:v3';
-  const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-key]'));
-  const months = Array.from(document.querySelectorAll('.month'));
-  const totalBar = document.getElementById('progressTotal');
+const STORAGE_KEY='cryptoPlan:v5';
+const checkboxes=Array.from(document.querySelectorAll('input[type="checkbox"][data-key]'));
+const months=Array.from(document.querySelectorAll('.month'));
+const totalBar=document.getElementById('progressTotal');
 
-  // Carregar estado
-  let state = {};
-  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ state = {}; }
+let state={};
+try{state=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}catch(e){state={}}
+checkboxes.forEach(cb=>{if(state[cb.dataset.key]) cb.checked=true;});
 
-  checkboxes.forEach(cb => { if(state[cb.dataset.key]) cb.checked = true; });
+function updateBars(){
+  months.forEach(month=>{
+    const theoryCBs=month.querySelectorAll('ul:nth-of-type(1) input[type="checkbox"]');
+    const practiceCBs=month.querySelectorAll('ul:nth-of-type(2) input[type="checkbox"]');
+    const doneTheory=[...theoryCBs].filter(cb=>cb.checked).length;
+    const donePractice=[...practiceCBs].filter(cb=>cb.checked).length;
+    const pctTheory=theoryCBs.length?Math.round(doneTheory/theoryCBs.length*100):0;
+    const pctPractice=practiceCBs.length?Math.round(donePractice/practiceCBs.length*100):0;
+    month.querySelector('.bar-theory').style.width=pctTheory+'%';
+    month.querySelector('.bar-theory').textContent=pctTheory+'%';
+    month.querySelector('.bar-practice').style.width=pctPractice+'%';
+    month.querySelector('.bar-practice').textContent=pctPractice+'%';
+  });
+}
 
-  function updateMonthBars(){
-    months.forEach(month=>{
-      const cbs = month.querySelectorAll('input[type="checkbox"][data-key]');
-      const done = month.querySelectorAll('input[type="checkbox"][data-key]:checked').length;
-      const pct = cbs.length ? Math.round((done/cbs.length)*100) : 0;
-      const bar = month.querySelector('.month-bar');
-      bar.style.width = pct + '%';
-      bar.textContent = pct + '%';
-    });
-  }
+function updateTotalBar(){
+  const done=checkboxes.filter(cb=>cb.checked).length;
+  const pct=Math.round(done/checkboxes.length*100);
+  totalBar.style.width=pct+'%';
+  totalBar.textContent=pct+'%';
+}
 
-  function updateTotalBar(){
-    const done = document.querySelectorAll('input[type="checkbox"][data-key]:checked').length;
-    const pct = Math.round((done/checkboxes.length)*100);
-    totalBar.style.width = pct + '%';
-    totalBar.textContent = pct + '%';
-  }
+function save(key,val){state[key]=val;localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
 
-  function save(key,val){ state[key]=val; localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-
-  checkboxes.forEach(cb => cb.addEventListener('change', ()=>{
-    save(cb.dataset.key, cb.checked);
-    updateMonthBars();
-    updateTotalBar();
-  }));
-
-  updateMonthBars();
+checkboxes.forEach(cb=>cb.addEventListener('change',()=>{
+  save(cb.dataset.key,cb.checked);
+  updateBars();
   updateTotalBar();
+}));
 
-  // Export/Import/Print
-  document.getElementById('btnExport').addEventListener('click', ()=>{
-    const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href=url; a.download='progresso-cripto.json'; a.click();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-  });
-  document.getElementById('btnImport').addEventListener('click', ()=>{
-    const input=document.createElement('input'); input.type='file'; input.accept='application/json';
-    input.onchange=()=>{
-      const file=input.files[0]; if(!file) return;
-      const reader=new FileReader();
-      reader.onload=()=>{
-        try{
-          const data=JSON.parse(reader.result);
-          state=data||{};
-          localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
-          checkboxes.forEach(cb=>cb.checked=!!state[cb.dataset.key]);
-          updateMonthBars(); updateTotalBar();
-          alert('Progresso importado!');
-        }catch(e){alert('Arquivo inválido');}
-      };
-      reader.readAsText(file);
+updateBars();
+updateTotalBar();
+
+document.getElementById('btnExport').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='progresso-cripto.json'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+document.getElementById('btnImport').addEventListener('click',()=>{
+  const input=document.createElement('input'); input.type='file'; input.accept='application/json';
+  input.onchange=()=>{
+    const file=input.files[0]; if(!file) return;
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try{
+        const data=JSON.parse(reader.result);
+        state=data||{};
+        localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+        checkboxes.forEach(cb=>cb.checked=!!state[cb.dataset.key]);
+        updateBars(); updateTotalBar();
+        alert('Progresso importado!');
+      }catch(e){alert('Arquivo inválido');}
     };
-    input.click();
-  });
-  document.getElementById('btnPrint').addEventListener('click', ()=>window.print());
+    reader.readAsText(file);
+  };
+  input.click();
+});
+document.getElementById('btnPrint').addEventListener('click',()=>window.print());
 
-  // Service Worker offline
-  if('serviceWorker' in navigator){
-    window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});
-  }
+if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}
 })();
 </script>
 </body>
 </html>
+
+
+
+
 
 
 
