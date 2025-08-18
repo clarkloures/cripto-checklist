@@ -1,20 +1,23 @@
 {
   "name": "OrbeLab",
   "short_name": "OrbeLab",
-  "start_url": "index.html",
+  "start_url": "/?source=pwa",
   "display": "standalone",
-  "background_color": "#0d1117",
-  "theme_color": "#0d1117",
+  "background_color": "#2c3e50",
+  "theme_color": "#2c3e50",
+  "scope": "/",
+  "description": "OrbeLab - Plano de Estudos em Blockchain e Criptomoedas",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ]
 }
+

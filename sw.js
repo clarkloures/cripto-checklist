@@ -1,46 +1,31 @@
-const CACHE_NAME = 'orbelab-cache-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/sw.js',
-  // Adicione aqui outros arquivos que você criar (CSS, JS, imagens)
+const CACHE_NAME = "orbelab-cache-v1";
+const FILES_TO_CACHE = [
+  "/",
+  "/index.html",
+  "/manifest.json"
 ];
 
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
+// Instala e adiciona arquivos ao cache
+self.addEventListener("install", e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
   );
+  self.skipWaiting();
 });
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        return response || fetch(event.request);
-      })
+// Ativa e remove caches antigos
+self.addEventListener("activate", e => {
+  e.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+    ))
   );
+  self.clients.claim();
 });
 
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    caches.keys().then(function(cacheNames){
-      return Promise.all(
-        cacheNames.map(function(cacheName){
-          if(cacheName !== CACHE_NAME) return caches.delete(cacheName);
-        })
-      );
-    })
+// Intercepta requisições
+self.addEventListener("fetch", e => {
+  e.respondWith(
+    caches.match(e.request).then(resp => resp || fetch(e.request))
   );
 });
-
-
-
-
-
-
-
-
