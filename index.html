@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OrbeLab</title>
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0d1117">
 <style>
 :root{
@@ -161,7 +161,6 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
 </section>
 
-<!-- Nível 5 já com descrições e links -->
 <section class="month" data-month="m5">
 <h2>Nível 5 – Custódia Própria e Transações Offline</h2>
 <strong>Estudos:</strong>
@@ -270,10 +269,10 @@ document.getElementById('btnImport').onclick=()=>{
   const input=document.createElement('input');
   input.type='file';
   input.accept='application/json';
-  input.onchange=()=>{ 
+  input.onchange=()=>{
     const file=input.files[0];
     const reader=new FileReader();
-    reader.onload=()=>{ 
+    reader.onload=()=>{
       try{
         state=JSON.parse(reader.result);
         localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
@@ -289,7 +288,7 @@ document.getElementById('btnPrint').onclick=()=>window.print();
 
 // PWA registration
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js').then(()=>console.log('SW registered')).catch(e=>console.log(e));
+  navigator.serviceWorker.register('sw.js').then(()=>console.log('SW registered')).catch(e=>console.log(e));
 }
 })();
 </script>
