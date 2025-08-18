@@ -1,45 +1,47 @@
-const CACHE_NAME = "orbelab-cache-v1";
-const ASSETS = [
-  "/", 
-  "/index.html",
-  "/manifest.json",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png"
+const CACHE_NAME = 'orbelab-cache-v1';
+const FILES_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/sw.js',
+  '/ICON/orbelab-icon-192.png',
+  '/ICON/orbelab-icon-512.png',
+  '/ICON/orbelab-icon.svg'
 ];
 
-// Instala o service worker e faz cache dos arquivos essenciais
-self.addEventListener("install", event => {
+// Instalação do Service Worker e cache dos arquivos
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(ASSETS);
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('[SW] Caching files');
+      return cache.addAll(FILES_TO_CACHE);
     })
   );
+  self.skipWaiting();
 });
 
-// Ativa o SW e remove caches antigos
-self.addEventListener("activate", event => {
+// Ativação do Service Worker e limpeza de caches antigos
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
+    caches.keys().then((keyList) =>
       Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+        keyList.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log('[SW] Removing old cache', key);
+            return caches.delete(key);
+          }
+        })
       )
     )
   );
+  self.clients.claim();
 });
 
-// Intercepta requisições para funcionar offline
-self.addEventListener("fetch", event => {
+// Intercepta requisições e retorna do cache se disponível
+self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return (
-        response ||
-        fetch(event.request).catch(() =>
-          // Fallback: caso queira exibir algo offline
-          new Response("Você está offline. Conteúdo não disponível.", {
-            headers: { "Content-Type": "text/plain" }
-          })
-        )
-      );
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
     })
   );
 });

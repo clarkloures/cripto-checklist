@@ -5,19 +5,20 @@
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
+  "description": "OrbeLab - Plano de estudos de criptomoedas e blockchain.",
   "icons": [
     {
-      "src": "ICON/orbelab-icon-192.png",
+      "src": "icon/orbelab-icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "ICON/orbelab-icon-512.png",
+      "src": "icon/orbelab-icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "ICON/orbelab-icon.svg",
+      "src": "icon/orbelab-icon.svg",
       "type": "image/svg+xml",
       "sizes": "512x512"
     }
