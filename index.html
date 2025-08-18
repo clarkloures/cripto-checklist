@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plano de Estudos - Criptomoedas (6 Níveis)</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0d1117">
 <style>
 :root{
   --bg:#0d1117;
@@ -183,7 +185,7 @@ a:hover{text-decoration:underline;}
 
 <script>
 (function(){
-const STORAGE_KEY='cryptoPlan:v5';
+const STORAGE_KEY='cryptoPlan:pwa';
 const checkboxes=Array.from(document.querySelectorAll('input[type="checkbox"][data-key]'));
 const months=Array.from(document.querySelectorAll('.month'));
 const totalBar=document.getElementById('progressTotal');
@@ -252,11 +254,17 @@ document.getElementById('btnImport').addEventListener('click',()=>{
 });
 document.getElementById('btnPrint').addEventListener('click',()=>window.print());
 
-if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{});});}
+// Registro do Service Worker para PWA
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
 })();
 </script>
 </body>
 </html>
+
 
 
 

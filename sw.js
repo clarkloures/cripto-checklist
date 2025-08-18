@@ -1,7 +1,7 @@
 const CACHE='crypto-plan-cache-v1';
 self.addEventListener('install',e=>{e.waitUntil((async()=>{
   const c=await caches.open(CACHE);
-  await c.addAll(['./','./index.html']);
+  await c.addAll(['./','./index.html','./manifest.json']);
 })());self.skipWaiting();});
 self.addEventListener('activate',e=>{e.waitUntil((async()=>{
   const keys=await caches.keys();
@@ -20,5 +20,6 @@ self.addEventListener('fetch',e=>{
     return cached||fetchP;
   }));
 });
+
 
 
