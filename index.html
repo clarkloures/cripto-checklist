@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plano de Estudos - Criptomoedas (6 Níveis)</title>
-<link rel="manifest" href="./manifest.json">
+<title>OrbeLab - Plano de Estudos Cripto</title>
+<link rel="manifest" href="/OrbeLab/manifest.json">
 <meta name="theme-color" content="#0d1117">
 <style>
 :root{
@@ -32,9 +32,6 @@ ul{list-style:none; padding:0; margin:0; flex:1;}
 li{background: var(--muted); border:1px solid var(--edge); border-radius:6px; padding:10px; margin:6px 0; display:flex; flex-direction:column; gap:6px;}
 label{display:flex; align-items:center; gap:10px; font-size:14px;}
 input[type="checkbox"]{transform:scale(1.15);}
-.links{font-size:13px;}
-a{color:var(--link); text-decoration:none; margin-right:8px;}
-a:hover{text-decoration:underline;}
 .month-progress{margin-top:6px; background: var(--muted); border:1px solid var(--edge); border-radius:6px; overflow:hidden;}
 .month-bar{height:14px; width:0%; color:#fff; font-size:12px; line-height:14px; text-align:center; transition: width .25s ease;}
 .bar-theory{background: var(--green);}
@@ -46,7 +43,7 @@ a:hover{text-decoration:underline;}
 </head>
 <body>
 <header>
-  <h1>Plano de Estudos - Criptomoedas (6 Níveis)</h1>
+  <h1>OrbeLab - Plano de Estudos Cripto (6 Níveis)</h1>
   <div class="toolbar">
     <button class="btn" id="btnExport">Exportar resultado</button>
     <button class="btn" id="btnImport">Importar resultado</button>
@@ -56,6 +53,7 @@ a:hover{text-decoration:underline;}
 
 <div class="container" id="grid">
 
+<!-- Níveis 1 a 6 - copiar estrutura dos níveis anteriores aqui -->
 <!-- Nível 1 -->
 <section class="month" data-month="m1">
   <h2>Nível 1 – Fundamentos Absolutos</h2>
@@ -185,7 +183,7 @@ a:hover{text-decoration:underline;}
 
 <script>
 (function(){
-const STORAGE_KEY='cryptoPlan:pwa';
+const STORAGE_KEY='OrbeLab:pwa';
 const checkboxes=Array.from(document.querySelectorAll('input[type="checkbox"][data-key]'));
 const months=Array.from(document.querySelectorAll('.month'));
 const totalBar=document.getElementById('progressTotal');
@@ -230,7 +228,7 @@ updateTotalBar();
 document.getElementById('btnExport').addEventListener('click',()=>{
   const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
-  const a=document.createElement('a'); a.href=url; a.download='progresso-cripto.json'; a.click();
+  const a=document.createElement('a'); a.href=url; a.download='progresso-OrbeLab.json'; a.click();
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 document.getElementById('btnImport').addEventListener('click',()=>{
@@ -257,13 +255,14 @@ document.getElementById('btnPrint').addEventListener('click',()=>window.print())
 // Registro do Service Worker para PWA
 if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
-    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    navigator.serviceWorker.register('/OrbeLab/sw.js').catch(console.error);
   });
 }
 })();
 </script>
 </body>
 </html>
+
 
 
 
