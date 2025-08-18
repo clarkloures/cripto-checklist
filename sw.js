@@ -1,13 +1,13 @@
 const CACHE_NAME = 'orbelab-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/style.css', // caso você mova CSS externo
-  // você pode adicionar outros arquivos estáticos importantes
+  '/cripto-checklist/',
+  '/cripto-checklist/index.html',
+  '/cripto-checklist/style.css',  // se você separar CSS
+  '/cripto-checklist/icons/icon-192.png',
+  '/cripto-checklist/icons/icon-512.png'
 ];
 
-// Instalando Service Worker e cache inicial
+// Instala o SW e adiciona arquivos ao cache
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -16,31 +16,33 @@ self.addEventListener('install', event => {
   );
 });
 
-// Ativando o Service Worker e limpando caches antigos
+// Ativa o SW e remove caches antigos
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) return caches.delete(key);
-        })
+        keys.filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
       )
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Interceptando requisições
+// Intercepta requests e responde do cache ou fetch
 self.addEventListener('fetch', event => {
-  // Tentativa de buscar online primeiro, senão retorna do cache
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        // Clona a resposta para salvar no cache
-        const resClone = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, resClone));
-        return response;
-      })
-      .catch(() => caches.match(event.request).then(res => res))
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request)
+        .then(fetchRes => {
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, fetchRes.clone());
+            return fetchRes;
+          });
+        })
+        .catch(() => {
+          // fallback offline se precisar, ex: uma página offline
+          return caches.match('/cripto-checklist/index.html');
+        });
+    })
   );
 });

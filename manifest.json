@@ -1,19 +1,20 @@
 {
   "name": "OrbeLab",
   "short_name": "OrbeLab",
-  "description": "Checklist completo de aprendizado em Cripto, Bitcoin e Blockchain",
-  "start_url": "/index.html",
+  "description": "Checklist interativo de estudos e prática em criptoativos.",
+  "start_url": "/cripto-checklist/",
+  "scope": "/cripto-checklist/",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "/cripto-checklist/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/cripto-checklist/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
