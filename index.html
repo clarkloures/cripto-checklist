@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OrbeLab</title>
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#0d1117">
 <style>
 :root{
@@ -56,7 +56,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 
 <div class="container" id="grid">
 
-<!-- Níveis 1 a 6 -->
+<!-- Nível 1 -->
 <section class="month" data-month="m1">
 <h2>Nível 1 – Fundamentos Absolutos</h2>
 <strong>Estudos:</strong>
@@ -83,6 +83,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
 </section>
 
+<!-- Nível 2 -->
 <section class="month" data-month="m2">
 <h2>Nível 2 – Bitcoin e Blockchain na Prática</h2>
 <strong>Estudos:</strong>
@@ -109,6 +110,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
 </section>
 
+<!-- Nível 3 -->
 <section class="month" data-month="m3">
 <h2>Nível 3 – Outras Criptos e Contratos Inteligentes</h2>
 <strong>Estudos:</strong>
@@ -135,6 +137,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
 </section>
 
+<!-- Nível 4 -->
 <section class="month" data-month="m4">
 <h2>Nível 4 – Segurança e Boas Práticas</h2>
 <strong>Estudos:</strong>
@@ -161,6 +164,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
 </section>
 
+<!-- Nível 5 -->
 <section class="month" data-month="m5">
 <h2>Nível 5 – Custódia Própria e Transações Offline</h2>
 <strong>Estudos:</strong>
@@ -187,6 +191,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
 </section>
 
+<!-- Nível 6 -->
 <section class="month" data-month="m6">
 <h2>Nível 6 – Programação e Especializações</h2>
 <strong>Estudos:</strong>
@@ -218,7 +223,7 @@ p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
 <div class="progress-container">
   <div class="progress-bar" id="progressTotal">0%</div>
 </div>
-<p class="hint">Exportar/Importar permite backup do progresso. Funciona offline após primeira visita. ✅</p>
+<p class="hint">Exportar/Importar permite backup do progresso. Funciona online e offline parcial. ✅</p>
 
 <script>
 (function(){
@@ -229,6 +234,8 @@ const totalBar=document.getElementById('progressTotal');
 
 let state={};
 try{state=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}catch(e){state={}}
+
+// Inicializa checkboxes
 checkboxes.forEach(cb=>{if(state[cb.dataset.key]) cb.checked=true;});
 
 function updateBars(){
@@ -248,13 +255,17 @@ function updateBars(){
   totalBar.style.width=total+'%';
   totalBar.textContent=total+'%';
 }
+
+// Atualiza localStorage ao marcar/desmarcar
 checkboxes.forEach(cb=>cb.addEventListener('change',()=>{
   state[cb.dataset.key]=cb.checked;
   localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
   updateBars();
 }));
+
 updateBars();
 
+// Exportar
 document.getElementById('btnExport').onclick=()=>{
   const data=JSON.stringify(state,null,2);
   const blob=new Blob([data],{type:'application/json'});
@@ -265,6 +276,8 @@ document.getElementById('btnExport').onclick=()=>{
   a.click();
   URL.revokeObjectURL(url);
 };
+
+// Importar
 document.getElementById('btnImport').onclick=()=>{
   const input=document.createElement('input');
   input.type='file';
@@ -284,11 +297,15 @@ document.getElementById('btnImport').onclick=()=>{
   };
   input.click();
 };
+
+// Imprimir
 document.getElementById('btnPrint').onclick=()=>window.print();
 
 // PWA registration
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').then(()=>console.log('SW registered')).catch(e=>console.log(e));
+  navigator.serviceWorker.register('/sw.js')
+    .then(()=>console.log('SW registered'))
+    .catch(e=>console.log('SW registration failed:', e));
 }
 })();
 </script>
