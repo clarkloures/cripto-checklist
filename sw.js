@@ -3,34 +3,44 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  '/style.css', // caso você mova CSS externo
+  // você pode adicionar outros arquivos estáticos importantes
 ];
 
-// Instalação: cache dos arquivos essenciais
+// Instalando Service Worker e cache inicial
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
-// Ativação: limpar caches antigos
+// Ativando o Service Worker e limpando caches antigos
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => 
-      Promise.all(keys.map(key => {
-        if (key !== CACHE_NAME) return caches.delete(key);
-      }))
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) return caches.delete(key);
+        })
+      )
     )
   );
   self.clients.claim();
 });
 
-// Fetch: tenta online primeiro, senão usa cache
+// Interceptando requisições
 self.addEventListener('fetch', event => {
+  // Tentativa de buscar online primeiro, senão retorna do cache
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request)
+      .then(response => {
+        // Clona a resposta para salvar no cache
+        const resClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, resClone));
+        return response;
+      })
+      .catch(() => caches.match(event.request).then(res => res))
   );
 });
