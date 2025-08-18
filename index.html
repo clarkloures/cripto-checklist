@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrbeLab</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0d1117">
+<style>
+:root{
+  --bg:#0d1117;
+  --card:#161b22;
+  --edge:#30363d;
+  --muted:#21262d;
+  --text:#c9d1d9;
+  --title:#f0f6fc;
+  --link:#58a6ff;
+  --green:#2ea043;
+  --blue:#1f6feb;
+}
+*{box-sizing:border-box;}
+body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); margin:0; padding:0;}
+header{position: sticky; top:0; z-index:10; background: var(--card); border-bottom: 1px solid var(--edge); padding: 12px 16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:space-between;}
+header h1{margin:0; font-size:18px; color:var(--title);}
+.toolbar{display:flex; gap:8px; flex-wrap:wrap;}
+.btn{background: var(--muted); color: var(--title); border:1px solid var(--edge); border-radius:6px; padding:8px 12px; cursor:pointer; font-size:14px;}
+.btn:hover{filter:brightness(1.05);}
+.container{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; padding:20px;}
+.month{background: var(--card); border:1px solid var(--edge); border-radius:8px; padding:16px; display:flex; flex-direction:column;}
+.month h2{margin:0 0 10px; font-size:18px; color:var(--link);}
+ul{list-style:none; padding:0; margin:0; flex:1;}
+li{background: var(--muted); border:1px solid var(--edge); border-radius:6px; padding:10px; margin:6px 0; display:flex; flex-direction:column; gap:4px;}
+label{display:flex; align-items:center; gap:10px; font-size:14px;}
+input[type="checkbox"]{transform:scale(1.15);}
+.month-progress{margin-top:6px; background: var(--muted); border:1px solid var(--edge); border-radius:6px; overflow:hidden;}
+.month-bar{height:14px; width:0%; color:#fff; font-size:12px; line-height:14px; text-align:center; transition: width .25s ease;}
+.bar-theory{background: var(--green);}
+.bar-practice{background: var(--blue);}
+.progress-container{margin: 12px 20px 24px; background: var(--muted); border:1px solid var(--edge); border-radius:8px; overflow:hidden;}
+.progress-bar{height:24px; background: var(--green); width:0%; color:#fff; text-align:center; line-height:24px; font-weight:600; transition: width .25s ease;}
+.hint{opacity:.8; font-size:12px; text-align:center; margin: 0 20px 20px;}
+a{color:var(--link); text-decoration:none;}
+a:hover{text-decoration:underline;}
+p.desc{font-size:12px; color:#8b949e; margin-left:24px; margin-top:2px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>OrbeLab</h1>
+  <div class="toolbar">
+    <button class="btn" id="btnExport">Exportar resultado</button>
+    <button class="btn" id="btnImport">Importar resultado</button>
+    <button class="btn" id="btnPrint">Imprimir / PDF</button>
+  </div>
+</header>
+
+<div class="container" id="grid">
+
+<!-- Níveis 1 a 6 -->
+<section class="month" data-month="m1">
+<h2>Nível 1 – Fundamentos Absolutos</h2>
+<strong>Estudos:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m1_1"> História do dinheiro e evolução para o digital</label>
+<p class="desc">Aprenda como o dinheiro evoluiu até o digital e criptoativos.</p></li>
+<li><label><input type="checkbox" data-key="m1_2"> Conceitos de blockchain, descentralização e imutabilidade</label>
+<p class="desc">Noções de blockchain e sua importância para criptomoedas.</p></li>
+<li><label><input type="checkbox" data-key="m1_3"> Como funciona uma transação (chaves públicas e privadas)</label>
+<p class="desc">Entenda a mecânica de chaves e transações em blockchain.</p></li>
+<li><label><input type="checkbox" data-key="m1_4"> Bitcoin como exemplo prático</label>
+<p class="desc">Estudo de caso usando Bitcoin para consolidar conceitos.</p></li>
+</ul>
+<strong>Prática:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m1_p1"> Criar carteira gratuita (Trust Wallet/MetaMask)</label>
+<p class="desc">Configurar sua primeira carteira digital.</p></li>
+<li><label><input type="checkbox" data-key="m1_p2"> Enviar/receber valores fictícios (testnet)</label>
+<p class="desc">Testar transações sem risco financeiro real.</p></li>
+<li><label><input type="checkbox" data-key="m1_p3"> Explorar transações no blockchain explorer</label>
+<p class="desc">Usar blockchair.com ou etherscan.io para análise prática.</p></li>
+</ul>
+<div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+<div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
+
+<section class="month" data-month="m2">
+<h2>Nível 2 – Bitcoin e Blockchain na Prática</h2>
+<strong>Estudos:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m2_1"> Estrutura de blocos e mineração (Proof of Work)</label>
+<p class="desc">Como blocos são criados e minerados.</p></li>
+<li><label><input type="checkbox" data-key="m2_2"> Halving e política monetária do Bitcoin</label>
+<p class="desc">Impacto do halving na oferta de BTC.</p></li>
+<li><label><input type="checkbox" data-key="m2_3"> Rede P2P e consenso</label>
+<p class="desc">Como a rede mantém integridade sem autoridade central.</p></li>
+<li><label><input type="checkbox" data-key="m2_4"> Escalabilidade e limitações</label>
+<p class="desc">Desafios técnicos do Bitcoin.</p></li>
+</ul>
+<strong>Prática:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m2_p1"> Acompanhar blocos em tempo real no mempool.space</label>
+<p class="desc">Monitorar transações em tempo real.</p></li>
+<li><label><input type="checkbox" data-key="m2_p2"> Calcular taxas de transação</label>
+<p class="desc">Aprender como a taxa influencia a confirmação.</p></li>
+<li><label><input type="checkbox" data-key="m2_p3"> Testar envio com diferentes taxas e ver confirmação</label>
+<p class="desc">Simular diferentes cenários de envio BTC.</p></li>
+</ul>
+<div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+<div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
+
+<section class="month" data-month="m3">
+<h2>Nível 3 – Outras Criptos e Contratos Inteligentes</h2>
+<strong>Estudos:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m3_1"> Ethereum e contratos inteligentes</label>
+<p class="desc">Introdução à plataforma Ethereum e smart contracts.</p></li>
+<li><label><input type="checkbox" data-key="m3_2"> Stablecoins e uso no dia a dia</label>
+<p class="desc">Como usar stablecoins como moeda digital.</p></li>
+<li><label><input type="checkbox" data-key="m3_3"> Tokens ERC-20 e NFTs</label>
+<p class="desc">Entender padrões de tokens e NFTs.</p></li>
+<li><label><input type="checkbox" data-key="m3_4"> Projetos de privacidade (Monero, Zcash)</label>
+<p class="desc">Conhecer criptos focadas em anonimato.</p></li>
+</ul>
+<strong>Prática:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m3_p1"> Criar conta em exchange (somente verificação)</label>
+<p class="desc">Abrir conta sem investimento real ainda.</p></li>
+<li><label><input type="checkbox" data-key="m3_p2"> Interagir com contrato inteligente simples na testnet</label>
+<p class="desc">Usando Remix IDE para testes práticos.</p></li>
+<li><label><input type="checkbox" data-key="m3_p3"> Mintar um NFT gratuito na testnet</label>
+<p class="desc">Criar um NFT sem custo real.</p></li>
+</ul>
+<div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+<div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
+
+<section class="month" data-month="m4">
+<h2>Nível 4 – Segurança e Boas Práticas</h2>
+<strong>Estudos:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m4_1"> Tipos de carteiras (hot, cold, hardware)</label>
+<p class="desc">Conhecer diferentes carteiras e usos.</p></li>
+<li><label><input type="checkbox" data-key="m4_2"> Seed phrases e backups</label>
+<p class="desc">Importância de backups seguros.</p></li>
+<li><label><input type="checkbox" data-key="m4_3"> Principais golpes no mundo cripto</label>
+<p class="desc">Identificar e evitar fraudes comuns.</p></li>
+<li><label><input type="checkbox" data-key="m4_4"> Segurança digital (2FA, senhas, VPN)</label>
+<p class="desc">Práticas para proteger ativos online.</p></li>
+</ul>
+<strong>Prática:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m4_p1"> Configurar uma hardware wallet (ou simulação)</label>
+<p class="desc">Aprender a usar hardware wallet de forma segura.</p></li>
+<li><label><input type="checkbox" data-key="m4_p2"> Criar backup da seed phrase</label>
+<p class="desc">Armazenamento seguro offline.</p></li>
+<li><label><input type="checkbox" data-key="m4_p3"> Simular ataque phishing</label>
+<p class="desc">Treinar identificação de tentativas de fraude.</p></li>
+</ul>
+<div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+<div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
+
+<!-- Nível 5 já com descrições e links -->
+<section class="month" data-month="m5">
+<h2>Nível 5 – Custódia Própria e Transações Offline</h2>
+<strong>Estudos:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m5_1"> Custódia própria de BTC <a href="https://bitcoin.org/pt/choose-your-wallet" target="_blank">[link]</a></label>
+<p class="desc">Guia oficial para escolher a melhor carteira Bitcoin.</p></li>
+<li><label><input type="checkbox" data-key="m5_2"> Transações offline (cold wallets) <a href="https://electrum.org/#home" target="_blank">[link]</a></label>
+<p class="desc">Electrum: carteira segura para transações offline.</p></li>
+<li><label><input type="checkbox" data-key="m5_3"> Sem dependência de corretora <a href="https://bitcoin.org/pt/bitcoin-for-individuals" target="_blank">[link]</a></label>
+<p class="desc">Aprenda a operar Bitcoin sem exchanges.</p></li>
+<li><label><input type="checkbox" data-key="m5_4"> Segurança e backups de chaves privadas <a href="https://www.coindesk.com/learn/how-to-secure-your-bitcoin" target="_blank">[link]</a></label>
+<p class="desc">Proteja suas chaves privadas de forma segura.</p></li>
+</ul>
+<strong>Prática:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m5_p1"> Gerar transação offline e broadcast manual (Ex: Electrum) <a href="https://electrum.org/#download" target="_blank">[link]</a></label>
+<p class="desc">Baixar Electrum e criar transações offline.</p></li>
+<li><label><input type="checkbox" data-key="m5_p2"> Criar e armazenar cold wallet segura <a href="https://coldcardwallet.com/" target="_blank">[link]</a></label>
+<p class="desc">Coldcard: wallet segura offline.</p></li>
+<li><label><input type="checkbox" data-key="m5_p3"> Consultar recursos sobre custódia própria <a href="https://bitcoin.org/pt/you-and-bitcoin" target="_blank">[link]</a></label>
+<p class="desc">Guias educativos para controle total do BTC.</p></li>
+</ul>
+<div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+<div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
+
+<section class="month" data-month="m6">
+<h2>Nível 6 – Programação e Especializações</h2>
+<strong>Estudos:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m6_1"> Introdução ao Solidity e criação de contratos inteligentes</label>
+<p class="desc">Aprender a programar smart contracts.</p></li>
+<li><label><input type="checkbox" data-key="m6_2"> Noções de Web3.js ou Ethers.js</label>
+<p class="desc">Bibliotecas para interação com blockchain via JavaScript.</p></li>
+<li><label><input type="checkbox" data-key="m6_3"> Layer 2 e soluções de escalabilidade</label>
+<p class="desc">Estudo de soluções para melhorar performance blockchain.</p></li>
+<li><label><input type="checkbox" data-key="m6_4"> Criptoeconomia e tokenomics avançado</label>
+<p class="desc">Mecanismos econômicos dentro de criptomoedas.</p></li>
+</ul>
+<strong>Prática:</strong>
+<ul>
+<li><label><input type="checkbox" data-key="m6_p1"> Criar e fazer deploy de token ERC-20 na testnet</label>
+<p class="desc">Implementar seu próprio token em ambiente de teste.</p></li>
+<li><label><input type="checkbox" data-key="m6_p2"> Integrar contrato inteligente com interface web simples</label>
+<p class="desc">Conectar smart contract a interface HTML/JS.</p></li>
+<li><label><input type="checkbox" data-key="m6_p3"> Participar de mini-hackathon online de blockchain</label>
+<p class="desc">Exercício prático e competitivo para consolidar aprendizado.</p></li>
+</ul>
+<div class="month-progress"><div class="month-bar bar-theory">0%</div></div>
+<div class="month-progress"><div class="month-bar bar-practice">0%</div></div>
+</section>
+
+</div>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progressTotal">0%</div>
+</div>
+<p class="hint">Exportar/Importar permite backup do progresso. Funciona offline após primeira visita. ✅</p>
+
+<script>
+(function(){
+const STORAGE_KEY='OrbeLab:pwa';
+const checkboxes=Array.from(document.querySelectorAll('input[type="checkbox"][data-key]'));
+const months=Array.from(document.querySelectorAll('.month'));
+const totalBar=document.getElementById('progressTotal');
+
+let state={};
+try{state=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}catch(e){state={}}
+checkboxes.forEach(cb=>{if(state[cb.dataset.key]) cb.checked=true;});
+
+function updateBars(){
+  months.forEach(month=>{
+    const theoryCBs=month.querySelectorAll('ul:nth-of-type(1) input[type="checkbox"]');
+    const practiceCBs=month.querySelectorAll('ul:nth-of-type(2) input[type="checkbox"]');
+    const doneTheory=[...theoryCBs].filter(cb=>cb.checked).length;
+    const donePractice=[...practiceCBs].filter(cb=>cb.checked).length;
+    const pctTheory=theoryCBs.length?Math.round(doneTheory/theoryCBs.length*100):0;
+    const pctPractice=practiceCBs.length?Math.round(donePractice/practiceCBs.length*100):0;
+    month.querySelector('.bar-theory').style.width=pctTheory+'%';
+    month.querySelector('.bar-theory').textContent=pctTheory+'%';
+    month.querySelector('.bar-practice').style.width=pctPractice+'%';
+    month.querySelector('.bar-practice').textContent=pctPractice+'%';
+  });
+  const total=checkboxes.length?Math.round(checkboxes.filter(cb=>cb.checked).length/checkboxes.length*100):0;
+  totalBar.style.width=total+'%';
+  totalBar.textContent=total+'%';
+}
+checkboxes.forEach(cb=>cb.addEventListener('change',()=>{
+  state[cb.dataset.key]=cb.checked;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+  updateBars();
+}));
+updateBars();
+
+document.getElementById('btnExport').onclick=()=>{
+  const data=JSON.stringify(state,null,2);
+  const blob=new Blob([data],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='OrbeLab-Progress.json';
+  a.click();
+  URL.revokeObjectURL(url);
+};
+document.getElementById('btnImport').onclick=()=>{
+  const input=document.createElement('input');
+  input.type='file';
+  input.accept='application/json';
+  input.onchange=()=>{ 
+    const file=input.files[0];
+    const reader=new FileReader();
+    reader.onload=()=>{ 
+      try{
+        state=JSON.parse(reader.result);
+        localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+        checkboxes.forEach(cb=>{cb.checked=!!state[cb.dataset.key]});
+        updateBars();
+      }catch(e){alert('Arquivo inválido');}
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+};
+document.getElementById('btnPrint').onclick=()=>window.print();
+
+// PWA registration
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(()=>console.log('SW registered')).catch(e=>console.log(e));
+}
+})();
+</script>
+</body>
+</html>
