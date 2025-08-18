@@ -1,31 +1,45 @@
 const CACHE_NAME = "orbelab-cache-v1";
-const FILES_TO_CACHE = [
-  "/",
+const ASSETS = [
+  "/", 
   "/index.html",
-  "/manifest.json"
+  "/manifest.json",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png"
 ];
 
-// Instala e adiciona arquivos ao cache
-self.addEventListener("install", e => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
+// Instala o service worker e faz cache dos arquivos essenciais
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(ASSETS);
+    })
   );
-  self.skipWaiting();
 });
 
-// Ativa e remove caches antigos
-self.addEventListener("activate", e => {
-  e.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-    ))
+// Ativa o SW e remove caches antigos
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+      )
+    )
   );
-  self.clients.claim();
 });
 
-// Intercepta requisições
-self.addEventListener("fetch", e => {
-  e.respondWith(
-    caches.match(e.request).then(resp => resp || fetch(e.request))
+// Intercepta requisições para funcionar offline
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return (
+        response ||
+        fetch(event.request).catch(() =>
+          // Fallback: caso queira exibir algo offline
+          new Response("Você está offline. Conteúdo não disponível.", {
+            headers: { "Content-Type": "text/plain" }
+          })
+        )
+      );
+    })
   );
 });
